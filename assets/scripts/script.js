@@ -11,9 +11,58 @@ let contadorLet = 0;
 let contadorNum = 0;
 
 
+
+//TEMA
+let retro  = document.getElementById('retro');
+let boton1 = document.getElementById('oscuro');
+let inicial = document.getElementById('inicial');
+
+const cambiarTema = (tema)=>{
+    console.log('cambio de tema '+ tema)
+    document.getElementById('cssArchivo').href ='/assets/css/'+tema
+}
+let seleccion;
+retro.addEventListener('click', ()=>{
+    cambiarTema(retro.value);
+    seleccion = retro.value;
+    localStorage.setItem("tema1", seleccion);
+})
+
+boton1.addEventListener('click', ()=>{
+    cambiarTema(boton1.value);
+    seleccion = boton1.value;
+    localStorage.setItem("tema1", seleccion);
+})
+
+if(localStorage.getItem('tema1')){
+    console.log("esto es local "+localStorage.getItem('tema1'));
+    cambiarTema(localStorage.getItem('tema1'))
+}
+
+inicial.addEventListener('click', ()=>{
+    localStorage.removeItem('tema1');
+    window.location.href = "./index.html";
+})
+
+
+
+
+// FIN DE TEMA
+
+
 function teclado(e){
     const opcionTarget = e.target.innerText;
     let valor = parseInt(e.target.value);
+    console.log(valor);
+
+    if(valor == 11){
+        console.log("RESET");
+        spanNumeros.value = '';
+        spanLetras.value = '';
+        numeros = [];
+        contador=0, contadorLet=0, contadorNum = 0;
+        //window.location.href = "/index.html";
+    }
     if(contadorLet<10){
         validarTeclado(valor, opcionTarget, 'l');
     }
