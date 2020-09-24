@@ -19,7 +19,7 @@ let inicial = document.getElementById('inicial');
 
 const cambiarTema = (tema)=>{
     console.log('cambio de tema '+ tema)
-    document.getElementById('cssArchivo').href ='/assets/css/'+tema
+    document.getElementById('cssArchivo').href ='./assets/css/'+tema
 }
 let seleccion;
 retro.addEventListener('click', ()=>{
